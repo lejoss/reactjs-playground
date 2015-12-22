@@ -51,7 +51,7 @@ var NumberSection = React.createClass ({
         }
     },
     // get the value from buttons
-    // calculate if btn "=" pressed
+    // calculate if button "=" pressed
     // clean the parent state when (C) pressed
     onClickHandler(obj, val) {
         if(this.props.onKeyPress) this.props.onKeyPress(val)
@@ -108,7 +108,7 @@ var Button = React.createClass ({
             this.props.onMouseDown(this, this.props.value)
     },
     render() {
-        return <button className="btn" onMouseDown={this.handleClick}>{this.props.value}</button>
+        return <button className="button" onMouseDown={this.handleClick}>{this.props.value}</button>
     }
 });
 

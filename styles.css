@@ -33,7 +33,7 @@ body {
     margin: 16px;
 }
 
-.btn {
+.button {
     border: 2px solid black;
     padding: 26px;
     background: transparent;
@@ -41,8 +41,17 @@ body {
     font-weight: 700;
     font-size: 14px;
 }
-.btn:hover {
+.button:hover {
     background: #000;
     color: #fff;
 }
 
+/* list styles */
+
+
+
+.listForm {
+    border: 2px solid #F9F9F9;
+    padding: 16px;
+    background: #F9F9F9;
+}
