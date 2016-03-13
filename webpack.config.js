@@ -2,13 +2,20 @@
  * Created by lejoss on 16/12/15.
  */
 
-var path = require('path');
-var webpack = require('webpack');
+
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: __dirname + '/app/index.html',
+    filename: 'index.html',
+    inject: 'body'
+});
 
 module.exports = {
-    entry: './main.js',
+    entry: [
+        './app/main.js'
+        ],
     output: {
-        path: __dirname,
+        path: __dirname + '/dist',
         filename: 'bundle.js'
     },
     devServer: {
@@ -27,4 +34,5 @@ module.exports = {
             }
         ]
     },
+    plugins: [HtmlWebpackPluginConfig]
 };
