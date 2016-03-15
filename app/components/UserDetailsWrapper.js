@@ -15,8 +15,9 @@ const UserDetailsWrapper = (props) => {
     )
 };
 
-UserDetailsWrapper.PropTypes = {
+UserDetailsWrapper.header = {
     header: PropTypes.string.isRequired
+
 };
 
 module.exports = UserDetailsWrapper;

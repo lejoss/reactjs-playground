@@ -34,7 +34,7 @@ const Prompt = (props) => {
     )
 };
 
-Prompt.PropTypes = {
+Prompt.propTypes = {
     header: PropTypes.string.isRequired,
     onUpdateUser: PropTypes.func.isRequired,
     onSubmitUser: PropTypes.func.isRequired,

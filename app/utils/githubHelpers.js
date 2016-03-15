@@ -22,7 +22,7 @@ const helpers = {
                 return user.data;
             })
         }).catch((err) => {
-            console.warn('error', err);
+            console.warn('error in getPlayersInfo: ', err);
         })
     }
 };
