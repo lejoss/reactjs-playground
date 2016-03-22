@@ -2,9 +2,7 @@
  * Created by lejoss on 3/14/16.
  */
 
-import React from 'react';
-
-const PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
 const UserDetailsWrapper = (props) => {
     console.log(props);
@@ -18,7 +16,6 @@ const UserDetailsWrapper = (props) => {
 
 UserDetailsWrapper.header = {
     header: PropTypes.string.isRequired
-
 };
 
-module.exports = UserDetailsWrapper;
+export default UserDetailsWrapper;

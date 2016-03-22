@@ -2,16 +2,14 @@
  * Created by lejoss on 3/13/16.
  */
 
-import React from 'react';
-import transparentBg from '../styles/index';
-
-const PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
+import {transparentBg} from '../styles';
 
 // Stateless Functional Component
 const Prompt = (props) => {
 
     return (
-        <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg.transparentBg}>
+        <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
             <h1>{props.header}</h1>
             <div className="col-sm-12">
                 <form onSubmit={props.onSubmitUser}>
@@ -42,4 +40,4 @@ Prompt.propTypes = {
 };
 
 
-module.exports = Prompt;
+export default Prompt;

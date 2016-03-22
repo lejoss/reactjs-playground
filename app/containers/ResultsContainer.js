@@ -4,7 +4,7 @@
 
 import React from 'React';
 import Results from '../components/Results';
-import githubHelpers from '../utils/githubHelpers';
+import { battle } from '../utils/githubHelpers';
 
 const ResultsContainer =  React.createClass({
     getInitialState() {
@@ -17,7 +17,7 @@ const ResultsContainer =  React.createClass({
         //array of players
         //console.log(this.props.location.state.playersInfo);
 
-        githubHelpers.battle(this.props.location.state.playersInfo)
+        battle(this.props.location.state.playersInfo)
             .then((scores) => {
                 this.setState({
                     isLoading: false,
@@ -28,9 +28,9 @@ const ResultsContainer =  React.createClass({
     render() {
         return (
             <Results
-            isLoading={this.state.isLoading}
-            playersInfo={this.props.location.state.playersInfo}
-            scores={this.state.scores} />
+                isLoading={this.state.isLoading}
+                playersInfo={this.props.location.state.playersInfo}
+                scores={this.state.scores} />
         )
     }
 });

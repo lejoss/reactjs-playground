@@ -2,8 +2,7 @@
  * Created by lejoss on 3/18/16.
  */
 
-import React from 'react';
-const PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
 const styles = {
     container: {
@@ -53,8 +52,8 @@ const Loading = React.createClass({
             }
         }, this.props.speed)
     },
-    componentWillMount() {
-      clearInterval(this.interval);
+    componentWillUnmount() {
+      window.clearInterval(this.interval);
     },
     render() {
         return(
@@ -69,4 +68,4 @@ const Loading = React.createClass({
 
 
 
-module.exports = Loading;
+export default Loading;

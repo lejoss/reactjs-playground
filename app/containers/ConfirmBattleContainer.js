@@ -4,7 +4,7 @@
 
 import React from 'react';
 import ConfirmBattle from '../components/ConfirmBattle';
-import githubHelpers from '../utils/githubHelpers'
+import { getPlayersInfo } from '../utils/githubHelpers'
 
 const ConfirmBattleContainer = React.createClass({
     // in order to be able to do routing inside a component
@@ -18,9 +18,9 @@ const ConfirmBattleContainer = React.createClass({
       }
     },
     componentDidMount() {
-        const query = this.props.location.query;
+        const { query } = this.props.location;
         // fetch info from github then update state
-        githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
+        getPlayersInfo([query.playerOne, query.playerTwo])
             .then((players) => {
                 this.setState({
                     isLoading: false,
@@ -46,4 +46,4 @@ const ConfirmBattleContainer = React.createClass({
     }
 });
 
-module.exports = ConfirmBattleContainer;
+export default ConfirmBattleContainer;

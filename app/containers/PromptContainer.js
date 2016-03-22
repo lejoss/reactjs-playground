@@ -24,7 +24,7 @@ const PromptContainer = React.createClass({
     },
     handleSubmitUser(e) {
         e.preventDefault();
-        let username = this.state.username;
+        const { username } = this.state;
         this.setState({
             username: ''
         }) ;
@@ -37,7 +37,7 @@ const PromptContainer = React.createClass({
                 pathname: '/battle',
                 query: {
                     playerOne: this.props.routeParams.playerOne,
-                    playerTwo: this.state.username
+                    playerTwo: username
                 }
             })
         } else {

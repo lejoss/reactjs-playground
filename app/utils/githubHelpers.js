@@ -17,9 +17,7 @@ const getRepos = (username) => {
 };
 
 const getTotalStars = (repos) => {
-    return repos.data.reduce((prev, current) => {
-        return prev + current.stargazers_count
-    }, 0)
+    return repos.data.reduce((prev, current) => prev + current.stargazers_count, 0)
 };
 
 const getPlayersData = (player) => {
@@ -40,33 +38,18 @@ const calculateScores = (players) => {
     ]
 };
 
+export function getPlayersInfo(players) {
+    // fetch some data from github
+    return axios.all(players.map((username) => getUserInfo(username)))
+        .then((info) => info.map((user) => user.data))
+        .catch((err) => console.warn('error in getPlayersInfo: ', err))
+}
+export function battle(players) {
+    // this returns a promise
+    const playerOneData = getPlayersData(players[0]);
+    const playerTwoData = getPlayersData(players[1]);
 
-const helpers = {
-    getPlayersInfo: (players) => {
-        // fetch some data from github
-        return axios.all(players.map((username) => {
-            return getUserInfo(username)
-        }))
-            .then((info) => {
-            return info.map((user) => {
-                return user.data;
-
-            })
-        }).catch((err) => {
-            console.warn('error in getPlayersInfo: ', err);
-        })
-    },
-    battle: (players) => {
-        // this returns a promise
-        const playerOneData = getPlayersData(players[0]);
-        const playerTwoData = getPlayersData(players[1]);
-
-        return axios.all([playerOneData, playerTwoData])
-            .then(calculateScores)
-            .catch((err) => {
-                console.warn('error in battle: ', err)
-            })
-    }
-};
-
-export default helpers
+    return axios.all([playerOneData, playerTwoData])
+        .then(calculateScores)
+        .catch((err) => console.warn('error in battle: ', err))
+}
