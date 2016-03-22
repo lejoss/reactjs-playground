@@ -4,12 +4,11 @@
 
 import React, { PropTypes } from 'react';
 
-const UserDetailsWrapper = (props) => {
-    console.log(props);
+const UserDetailsWrapper = ({header, children}) => {
     return (
         <div className="col-sm-6">
-            <p className="lead">{props.header}</p>
-            {props.children}
+            <p className="lead">{header}</p>
+            {children}
         </div>
     )
 };

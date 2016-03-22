@@ -5,10 +5,10 @@
 import React from 'react';
 import {transparentBg} from '../styles';
 
-const MainContainer = (props) => {
+const MainContainer = ({children}) => {
   return (
       <div className="jumbotron col-sm-12 text-center" style={transparentBg}>
-          {props.children}
+          {children}
       </div>
   )
 };

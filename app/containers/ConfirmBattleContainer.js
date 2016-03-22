@@ -17,16 +17,29 @@ const ConfirmBattleContainer = React.createClass({
           playersInfo: []
       }
     },
-    componentDidMount() {
-        const { query } = this.props.location;
+    async componentDidMount() {
         // fetch info from github then update state
-        getPlayersInfo([query.playerOne, query.playerTwo])
-            .then((players) => {
-                this.setState({
-                    isLoading: false,
-                    playersInfo: [players[0], players[1]]
-                })
+        const { query } = this.props.location;
+
+        // using async/await
+        try {
+            const players = await getPlayersInfo([query.playerOne, query.playerTwo]);
+            this.setState({
+                isLoading: false,
+                playersInfo: [players[0], players[1]]
             })
+        } catch (err) {
+            console.warn('Error in ConfirmationBattleContainer', err);
+        }
+
+        // using .then
+        //getPlayersInfo([query.playerOne, query.playerTwo])
+        //    .then((players) => {
+        //        this.setState({
+        //            isLoading: false,
+        //            playersInfo: [players[0], players[1]]
+        //        })
+        //    })
     },
     handleInitiateBattle() {
          this.context.router.push({

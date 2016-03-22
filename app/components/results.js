@@ -2,15 +2,13 @@
  * Created by lejoss on 3/15/16.
  */
 
-import React from 'React';
-import styles from '../styles'
+import React, { PropTypes } from 'react';
+import {space} from '../styles'
 import UserDetailsWrapper from './UserDetailsWrapper';
 import UserDetails from './UserDetails';
 import MainContainer from '../components/MainContainer';
-import { ReactRouter, Link } from 'react-router';
+import { Link } from 'react-router';
 import Loading from './Loading';
-const PropTypes = React.PropTypes;
-
 
 //const puke = (obj) => {
 //    return <pre>{JSON.stringify(obj, 2, ' ')}</pre>
@@ -18,7 +16,7 @@ const PropTypes = React.PropTypes;
 
 const StartOver = () => {
     return (
-        <div className="col-sm-12" style={styles.space}>
+        <div className="col-sm-12" style={space}>
             <Link to='/playerOne'>
                 <button type='button' className='btn btn-lg btn-danger'>Reselect Players</button>
             </Link>
@@ -26,15 +24,15 @@ const StartOver = () => {
     )
 };
 
-const Results = (props) => {
+const Results = ({ isLoading, scores, playersInfo }) => {
 
-    if(props.isLoading === true) {
+    if(isLoading === true) {
         return (
             <Loading text='waiting' />
         )
     }
 
-    if (props.scores[0] === props.scores[1]) {
+    if (scores[0] === scores[1]) {
         return (
              <MainContainer>
                 <h1>It's a tie!</h1>
@@ -43,17 +41,17 @@ const Results = (props) => {
         )
     }
 
-    const winningIndex = props.scores[0] > props.scores[1] ? 0 : 1;
+    const winningIndex = scores[0] > scores[1] ? 0 : 1;
     const losingIndex = winningIndex === 0 ? 1 : 0;
     return (
         <MainContainer>
             <h1>Results</h1>
             <div className="col-sm-8 col-sm-offset-2">
                 <UserDetailsWrapper header="Winner">
-                    <UserDetails score={props.scores[winningIndex]} info={props.playersInfo[winningIndex]} />
+                    <UserDetails score={scores[winningIndex]} info={playersInfo[winningIndex]} />
                 </UserDetailsWrapper>
                 <UserDetailsWrapper header="Loser">
-                    <UserDetails score={props.scores[losingIndex]} info={props.playersInfo[losingIndex]} />
+                    <UserDetails score={scores[losingIndex]} info={playersInfo[losingIndex]} />
                 </UserDetailsWrapper>
             </div>
             <StartOver />

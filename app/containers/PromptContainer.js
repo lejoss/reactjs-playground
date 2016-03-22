@@ -29,20 +29,20 @@ const PromptContainer = React.createClass({
             username: ''
         }) ;
 
-        if (this.props.routeParams.playerOne) {
+        const { playerOne } = this.props.routeParams
+        if (playerOne) {
             // go to battle
-
             // use context for dynamic routing
             this.context.router.push({
                 pathname: '/battle',
                 query: {
-                    playerOne: this.props.routeParams.playerOne,
+                    playerOne,
                     playerTwo: username
                 }
             })
         } else {
             // go to /playerTwo
-            this.context.router.push('/playerTwo/' + this.state.username)
+            this.context.router.push(`/playerTwo/${username}`)
         }
     },
     render() {
